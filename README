@@ -1,0 +1,66 @@
+CSS3Bundler is something that will;
+	-Parse a CSS file for special markup, and insert vendor-specific CSS
+	-Bundle a list of CSS files together
+
+For example
+
+@CSS3_GRADIENT(background;#000;#FFF;url("../images/transparent_black.png"));
+
+will be replaced with
+
+background: url("../images/transparent_black.png");
+background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#FFF));
+background: -moz-linear-gradient(top,  #000,  #FFF);
+background: -o-linear-gradient(#000, #FFF);
+
+at runtime.
+
+Syntax:
+
+@CSS3_GRADIENT(property;first colour; second colour; fallback);
+
+property: The element property that will be changed (eg. background-image)
+fallback: The value when a browser that does not recognise CSS3 is being used.
+
+Why would you want this?
+
+Vendor specific code is a nightmare, since the spec is not solid, it could require updating at any time when the browser updates. Every vendor has a completely different idea about the syntax of a CSS3 declaration. Also, having to type 4 or 5 lines just to change the background of a DIV to a gradient is ludicrous.
+
+This application would enable you to write a one-line declaration in your CSS - the declaration would be replaced with the lines of CSS that different browsers need, after the application has read the file. Vendor-specific strings include;
+
+gradient
+drop-shadow
+border-radius
+transform
+transition
+opacity
+background-size
+
+
+The vendor prefix strings are;
+moz (firefox)
+o (opera)
+webkit (chrome and safari)
+ie (Internet explorer)
+
+
+This could be done “on-the-fly” via PHP, or alternatively it could be put through a desktop 
+application, then upload the modified CSS file to the webserver.
+				
+In the case of PHP, the PHP file would be referenced in the HTML files as a CSS file. 
+The PHP file would read all the CSS files in a predefined list, and look for special markup. It will modify the markup, and then echo the resulting CSS file.
+
+Implementation:
+
+The desktop application will be written in either Java or C++, for cross-platform compatibility. It will likely be a console application, you pass the location of a CSS file into it as an argument, then it outputs the modified file.
+
+The advantage of the desktop option, is that it means that no extra processing occurs when the CSS file is downloaded from the server (ie. parsing the file and appending CSS files together).
+
+Possible: Give the user some XML files that define the vendor-specific strings, so the user can update them (rather than waiting for me to recompile the app)
+
+Perhaps it should be possible to use the user agent string to refine what lines are printed. -o and -moz lines are useless and only add extra bloat to a chrome user.
+
+Release Timeline:
+
+0.1 Hardcode gradient conversion - RELEASED
+0.2 Using XML schema to define the markup
