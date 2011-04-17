@@ -63,4 +63,4 @@ Perhaps it should be possible to use the user agent string to refine what lines 
 Release Timeline:
 
 0.1 Hardcode gradient conversion - RELEASED
-0.2 Using XML schema to define the markup
+0.2 Bundle multiple CSS files together
