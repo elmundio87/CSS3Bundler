@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<webkit vendorPrefix='-webkit'>
+	<properties>
+		<firstcolour/>
+		<secondcolour/>
+	</properties>
+
+		-webkit-gradient(linear, left top, left bottom, from(".$firstcolour."), to(".$secondcolour."));\r\n";
