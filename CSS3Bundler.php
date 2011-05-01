@@ -92,10 +92,7 @@ while(strpos($file, "@CSS3_GRADIENT") != false)
 			$replacementstring .= $rule.": -webkit-gradient(linear, left top, left bottom, from(".$firstcolour."), to(".$secondcolour."));\r\n";
 			$replacementstring .= $rule.": -moz-linear-gradient(top,".$firstcolour.",".$secondcolour.");\r\n";
 			$replacementstring .= $rule.": -o-linear-gradient(".$firstcolour.", ".$secondcolour.");\r\n";
-			$replacementstring .= "filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='".$firstcolour."', endColorstr='".$secondcolour."');\r\n";
-  			$replacementstring .= "-ms-filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='".$firstcolour."', endColorstr='".$secondcolour."')';\r\n";
-            $replacementstring .= "zoom:1;\r\n";
-	
+		
 	
 			$file = str_replace($fullstring,$replacementstring, $file);
 			$state = 0;
